@@ -1,4 +1,4 @@
-INSERT INTO mushroom_location (name, x, y, description) VALUES
+INSERT INTO public.mushroom_location (name, x, y, description) VALUES
                                                             ('Agaricus bisporus', 45.4215, -75.6972, 'Also known as the white button mushroom, commonly found in North America and Europe. Used in many dishes.'),
                                                             ('Boletus edulis', 46.603354, 1.888334, 'The king bolete is a popular and sought-after wild mushroom. It grows in various parts of Europe.'),
                                                             ('Amanita muscaria', 58.5950, 25.0136, 'Known as the fly agaric. Iconic red and white mushroom. Common in Estonian forests.'),
