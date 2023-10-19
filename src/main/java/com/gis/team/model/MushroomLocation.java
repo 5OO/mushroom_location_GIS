@@ -1,9 +1,6 @@
 package com.gis.team.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -19,7 +16,9 @@ public class MushroomLocation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    @Column(precision = 10, scale = 6)
     private BigDecimal x;
+    @Column(precision = 10, scale = 6)
     private BigDecimal y;
     private String description;
 
