@@ -16,9 +16,9 @@ public class MushroomLocation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @Column(precision = 10, scale = 6)
+    @Column(precision = 19, scale = 15)
     private BigDecimal x;
-    @Column(precision = 10, scale = 6)
+    @Column(precision = 19, scale = 15)
     private BigDecimal y;
     private String description;
 

@@ -38,4 +38,7 @@ INSERT INTO public.mushroom_location (name, x, y, description) VALUES
                                                             ('Tricholoma sulphureum', 55.9533, -3.1883, 'Sulphur knight. Widely distributed across Europe, especially Scotland.'),
                                                             ('Amanita rubescens', 58.5953, 25.0134, 'The blusher. Common in Estonia and many parts of Europe.'),
                                                             ('Russula integra', 58.5953, 25.0135, 'Entire russula. Found in Estonian woods during summer.'),
-                                                            ('Lactarius uvidus', 58.5953, 25.0136, 'Brandy milkcap. Common in Estonian forests during autumn.');
+                                                            ('Lactarius uvidus', 58.5953, 25.0136, 'Brandy milkcap. Common in Estonian forests during autumn.'),
+                                                            ('Tallinn', 59.43656998937416, 24.751016910523873, 'feature 1 in Estonian forests during autumn.'),
+                                                            ('Väo karjäär', 59.42713690675782, 24.774741679964393, 'Ülemiste järvevana  in Estonia.'),
+                                                            ('rändom', -159.42713690675782, -124.774741679964393, 'rändom test.');
