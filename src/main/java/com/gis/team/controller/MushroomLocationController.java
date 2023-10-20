@@ -1,13 +1,17 @@
 package com.gis.team.controller;
 
 import com.gis.team.model.MushroomLocation;
+import com.gis.team.service.GeoJsonConverter;
 import com.gis.team.service.MushroomLocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/mushroom-locations")
@@ -20,9 +24,18 @@ public class MushroomLocationController {
     @Autowired
     private MushroomLocationService service;
 
-    @GetMapping
-    public ResponseEntity<List<MushroomLocation>> getAllLocations() {
-        return ResponseEntity.ok(service.getAllLocations());
+    @GetMapping(produces = "application/json")
+    public ResponseEntity<Map<String, Object>> getAllLocations() {
+        List<MushroomLocation> mushroomLocationList = service.getAllLocations();
+
+        List<Map<String , Object>> features = mushroomLocationList.stream()
+                .map(location -> GeoJsonConverter.toGeoJson(location))
+                .collect(Collectors.toList());
+
+        Map<String, Object> featureCollection = new HashMap<>();
+        featureCollection.put("type", "FeatureCollection");
+        featureCollection.put("features", features);
+        return ResponseEntity.ok(featureCollection);
     }
 
     @GetMapping("/{id}")
