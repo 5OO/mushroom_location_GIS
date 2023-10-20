@@ -62,8 +62,8 @@ public class MushroomLocationController {
     }
 
     @PostMapping
-    public ResponseEntity<MushroomLocation> addLocation(@RequestBody MushroomLocation location) {
-        return ResponseEntity.ok(service.addLocation(location));
+    public ResponseEntity<Map<String, Object>> addLocation(@RequestBody MushroomLocation location) {
+        return ResponseEntity.ok(GeoJsonConverter.toGeoJson(service.addLocation(location)));
     }
 
     @PutMapping("/{id}")
