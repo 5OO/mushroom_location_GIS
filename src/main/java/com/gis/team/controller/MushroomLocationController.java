@@ -48,8 +48,17 @@ public class MushroomLocationController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<MushroomLocation>> getLocationByName(@RequestParam String name) {
-        return ResponseEntity.ok(service.getLocationByName(name));
+    public ResponseEntity<Map<String, Object>> getLocationByName(@RequestParam String name) {
+        List<MushroomLocation> mushroomLocationList = service.getLocationByName(name);
+
+        List<Map<String , Object>> features = mushroomLocationList.stream()
+                .map(location -> GeoJsonConverter.toGeoJson(location))
+                .collect(Collectors.toList());
+
+        Map<String, Object> featureCollection = new HashMap<>();
+        featureCollection.put("type", "FeatureCollection");
+        featureCollection.put("features", features);
+        return ResponseEntity.ok(featureCollection);
     }
 
     @PostMapping
