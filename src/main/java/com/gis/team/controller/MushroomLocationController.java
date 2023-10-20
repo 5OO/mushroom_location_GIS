@@ -67,9 +67,9 @@ public class MushroomLocationController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MushroomLocation> updateLocation(@PathVariable Integer id, @RequestBody MushroomLocation location) {
+    public ResponseEntity<Map<String, Object>> updateLocation(@PathVariable Integer id, @RequestBody MushroomLocation location) {
         location.setId(id); // Ensuring the ID from the path variable is set on the location to update
-        return ResponseEntity.ok(service.updateLocation(location));
+        return ResponseEntity.ok(GeoJsonConverter.toGeoJson(service.updateLocation(location)));
     }
 
     @DeleteMapping("/{id}")
