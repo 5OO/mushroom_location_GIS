@@ -39,12 +39,12 @@ public class MushroomLocationController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MushroomLocation> getLocationById(@PathVariable Integer id) {
+    public ResponseEntity<Map<String, Object>> getLocationById(@PathVariable Integer id) {
         Optional<MushroomLocation> locationOpt = locationService.getLocationById(id);
         if (!locationOpt.isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(locationOpt.get());
+        return ResponseEntity.ok(GeoJsonConverter.toGeoJson(locationOpt.get()) );
     }
 
     @GetMapping("/search")
